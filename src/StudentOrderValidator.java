@@ -5,14 +5,22 @@ public class StudentOrderValidator
     }
 
     static void checkAll() {
-        StudentOrder so = readStudentOrder();
 
-        AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWedding wedAnswer = checkWedding(so);
-        AnswerChildren childAnswer = checkChildren(so);
-        AnswerStudent studAnswer = checkStudent(so);
+        while (true) {
+            StudentOrder so = readStudentOrder();
 
-        sendMail(so);
+            if (so == null) {
+                break;
+            } else {
+
+                AnswerCityRegister cityAnswer = checkCityRegister(so);
+                AnswerWedding wedAnswer = checkWedding(so);
+                AnswerChildren childAnswer = checkChildren(so);
+                AnswerStudent studAnswer = checkStudent(so);
+
+                sendMail(so);
+            }
+        }
     }
 
     static StudentOrder readStudentOrder() {
