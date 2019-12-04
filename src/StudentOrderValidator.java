@@ -12,8 +12,10 @@ public class StudentOrderValidator
             if (so == null) {
                 break;
             } else {
-
                 AnswerCityRegister cityAnswer = checkCityRegister(so);
+                if (!cityAnswer.success) {
+                    continue;
+                }
                 AnswerWedding wedAnswer = checkWedding(so);
                 AnswerChildren childAnswer = checkChildren(so);
                 AnswerStudent studAnswer = checkStudent(so);
@@ -50,6 +52,6 @@ public class StudentOrderValidator
     }
 
     static void sendMail(StudentOrder so) {
-
+        System.out.println("Почта отправлена");
     }
 }
