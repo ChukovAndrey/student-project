@@ -31,9 +31,7 @@ public class StudentOrderValidator
     }
 
     static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        System.out.println("CityRegister is running");
-        AnswerCityRegister ans = new AnswerCityRegister();
-        return ans;
+        return CityRegisterValidator.checkCityRegister(so);
     }
 
     static AnswerWedding checkWedding(StudentOrder so) {
