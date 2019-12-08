@@ -1,3 +1,7 @@
+package edu.javapractice.studentorder;
+
+import edu.javapractice.studentorder.domain.StudentOrder;
+
 public class SaveStudentOrder
 {
 

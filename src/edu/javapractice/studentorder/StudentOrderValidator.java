@@ -1,3 +1,12 @@
+package edu.javapractice.studentorder;
+
+import edu.javapractice.studentorder.domain.*;
+import edu.javapractice.studentorder.mail.MailSender;
+import edu.javapractice.studentorder.validator.ChildrenValidator;
+import edu.javapractice.studentorder.validator.CityRegisterValidator;
+import edu.javapractice.studentorder.validator.MarriageValidator;
+import edu.javapractice.studentorder.validator.StudentValidator;
+
 public class StudentOrderValidator
 {
     public static void main(String[] args) {
@@ -17,7 +26,7 @@ public class StudentOrderValidator
                     //continue;
                     break;
                 }
-                AnswerMarriage marriageAnswer = AnswerMarriage(so);
+                AnswerMarriage marriageAnswer = checkMarriage(so);
                 AnswerChildren childAnswer = checkChildren(so);
                 AnswerStudent studAnswer = checkStudent(so);
 
@@ -40,19 +49,21 @@ public class StudentOrderValidator
         return ans;
     }
 
-    static AnswerMarriage AnswerMarriage(StudentOrder so) {
-        return MarriageValidator.AnswerMarriage(so);
+    static AnswerMarriage checkMarriage(StudentOrder so) {
+        MarriageValidator wd = new MarriageValidator();
+        return wd.checkMarriage(so);
     }
 
     static AnswerChildren checkChildren(StudentOrder so) {
-        return ChildrenValidator.checkChildren(so);
+        ChildrenValidator cv = new ChildrenValidator();
+        return cv.checkChildren(so);
     }
 
     static AnswerStudent checkStudent(StudentOrder so) {
-        return StudentValidator.checkStudent(so);
+        return new StudentValidator().checkStudent(so);
     }
 
     static void sendMail(StudentOrder so) {
-        System.out.println("Почта отправлена");
+        new MailSender().sendMail(so);
     }
 }
