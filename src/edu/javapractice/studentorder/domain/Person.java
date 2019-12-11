@@ -4,10 +4,14 @@ import java.time.LocalDate;
 
 public class Person
 {
-    private String givenName;
-    private String secondName;
+    protected String givenName;
+    protected String surName;
     private String patronymic;
     private LocalDate dateOfBirth;
+
+    public String getPersonString() {
+        return surName + "" + givenName;
+    }
 
     public String getGivenName() {
         return givenName;
@@ -17,12 +21,12 @@ public class Person
         this.givenName = givenName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
     public String getPatronymic() {
