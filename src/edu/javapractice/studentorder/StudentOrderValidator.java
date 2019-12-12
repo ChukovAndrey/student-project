@@ -9,11 +9,26 @@ import edu.javapractice.studentorder.validator.StudentValidator;
 
 public class StudentOrderValidator
 {
-    public static void main(String[] args) {
-        checkAll();
+    private CityRegisterValidator cityRegisterVal;
+    private MarriageValidator marriageVal;
+    private ChildrenValidator childrenVal;
+    private StudentValidator studentVal;
+    private MailSender mailSender;
+
+    public StudentOrderValidator() {
+        cityRegisterVal = new CityRegisterValidator();
+        marriageVal = new MarriageValidator();
+        childrenVal = new ChildrenValidator();
+        studentVal = new StudentValidator();
+        mailSender = new MailSender();
     }
 
-    static void checkAll() {
+    public static void main(String[] args) {
+        StudentOrderValidator sov = new StudentOrderValidator();
+        sov.checkAll();
+    }
+
+    public void checkAll() {
 
         while (true) {
             StudentOrder so = readStudentOrder();
@@ -35,35 +50,28 @@ public class StudentOrderValidator
         }
     }
 
-    static StudentOrder readStudentOrder() {
+    public StudentOrder readStudentOrder() {
         StudentOrder so = new StudentOrder();
         return so;
     }
 
-    static AnswerCityRegister checkCityRegister(StudentOrder so) {
-        CityRegisterValidator crv = new CityRegisterValidator();
-        crv.hostName = "Host";
-        crv.login = "Login1";
-        crv.password = "Password1";
-        AnswerCityRegister ans = crv.checkCityRegister(so);
-        return ans;
+    public AnswerCityRegister checkCityRegister(StudentOrder so) {
+        return cityRegisterVal.checkCityRegister(so);
     }
 
-    static AnswerMarriage checkMarriage(StudentOrder so) {
-        MarriageValidator wd = new MarriageValidator();
-        return wd.checkMarriage(so);
+    public AnswerMarriage checkMarriage(StudentOrder so) {
+        return marriageVal.checkMarriage(so);
     }
 
-    static AnswerChildren checkChildren(StudentOrder so) {
-        ChildrenValidator cv = new ChildrenValidator();
-        return cv.checkChildren(so);
+    public AnswerChildren checkChildren(StudentOrder so) {
+        return childrenVal.checkChildren(so);
     }
 
-    static AnswerStudent checkStudent(StudentOrder so) {
-        return new StudentValidator().checkStudent(so);
+    public AnswerStudent checkStudent(StudentOrder so) {
+        return studentVal.checkStudent(so);
     }
 
-    static void sendMail(StudentOrder so) {
-        new MailSender().sendMail(so);
+    public void sendMail(StudentOrder so) {
+        mailSender.sendMail(so);
     }
 }
