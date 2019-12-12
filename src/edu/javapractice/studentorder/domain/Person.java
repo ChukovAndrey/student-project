@@ -9,6 +9,10 @@ public class Person
     private String patronymic;
     private LocalDate dateOfBirth;
 
+    public Person() {
+
+    }
+
     public String getPersonString() {
         return surName + "" + givenName;
     }
