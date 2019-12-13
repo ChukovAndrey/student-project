@@ -2,7 +2,7 @@ package edu.javapractice.studentorder.domain;
 
 import java.time.LocalDate;
 
-public class Person
+public abstract class Person
 {
     protected String givenName;
     protected String surName;
