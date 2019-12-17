@@ -15,9 +15,10 @@ public class Adult extends Person
 
     }
 
-    public String getPersonString() {
-        return surName + "" + givenName + passportNumber;
+    public Adult(String givenName, String surName, String patronymic, LocalDate dateOfBirth) {
+        super(givenName, surName, patronymic, dateOfBirth);
     }
+
 
     public String getPassportSeria() {
         return passportSeria;

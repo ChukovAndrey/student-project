@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 public abstract class Person
 {
-    protected String givenName;
-    protected String surName;
+    private String givenName;
+    private String surName;
     private String patronymic;
     private LocalDate dateOfBirth;
 
@@ -13,8 +13,11 @@ public abstract class Person
 
     }
 
-    public String getPersonString() {
-        return surName + "" + givenName;
+    public Person(String givenName, String surName, String patronymic, LocalDate dateOfBirth) {
+        this.givenName = givenName;
+        this.surName = surName;
+        this.patronymic = patronymic;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGivenName() {
