@@ -10,10 +10,10 @@ public class CityRegisterValidator
     public String login;
     public String password;
 
-    private RealCityRegisterChecker personChecker;
+    private CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
-        personChecker = new RealCityRegisterChecker();
+        personChecker = new FakeCityRegisterChecker();
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder so) {
